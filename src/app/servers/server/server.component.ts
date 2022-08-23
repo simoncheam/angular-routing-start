@@ -45,6 +45,9 @@ export class ServerComponent implements OnInit {
 
   onEdit() {
     //! append edit to currently loaded router (relative route)
-    this.router.navigate(["edit"], { relativeTo: this.route });
+    this.router.navigate(["edit"], {
+      relativeTo: this.route,
+      queryParamsHandling: "preserve", //
+    });
   }
 }
