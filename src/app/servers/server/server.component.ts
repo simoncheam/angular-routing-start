@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 //import { Subscription } from "rxjs/Subscription";
 
 import { ServersService } from "../servers.service";
@@ -16,7 +16,8 @@ export class ServerComponent implements OnInit {
 
   constructor(
     private serversService: ServersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -41,4 +42,9 @@ export class ServerComponent implements OnInit {
   // ngOnDestroy() {
   //   this.paramsSubscription.unsubscribe();
   // }
+
+  onEdit() {
+    //! append edit to currently loaded router (relative route)
+    this.router.navigate(["edit"], { relativeTo: this.route });
+  }
 }
